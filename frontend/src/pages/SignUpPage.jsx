@@ -8,7 +8,7 @@ const SignupPage = () => {
     const [email,setEmail]=useState(emailValue||"");
     const [userName,setUserName]=useState("");
     const [password,setPassword]=useState("");
-    const {signup}=useAuthStore();
+    const {signup,isSigningUp}=useAuthStore();
     const handleFormSubmit=(e)=>{
         e.preventDefault();
         signup({email,userName,password});
@@ -53,8 +53,8 @@ const SignupPage = () => {
                         placeholder="Enter Password"
                         id="password"/>
                     </div>
-                    <button type="submit" className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700">
-                        Sign Up
+                    <button type="submit" className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700" disabled={isSigningUp}>
+                        {isSigningUp?"Signing Up":"Sign Up"}
                     </button>
                 </form>
                 <div className="text-center text-gray-400">
