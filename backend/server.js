@@ -8,7 +8,7 @@ import { connectDB } from './config/db.js';
 import { protectRoute } from './middleware/protectRoute.js';
 import cookieParser from 'cookie-parser';
 import path from 'path';
-import cors from 'cors';
+
 
 const app=express();
 const PORT=ENV_VARS.PORT;
@@ -17,11 +17,6 @@ const __dirname=path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
-
-app.use(cors({
-  origin: 'https://netflix-clone-wy92.onrender.com',
-  credentials: true,
-}));
 
 app.use("/api/v1/auth",authRoutes);
 app.use("/api/v1/movie",protectRoute,movieRoutes);
